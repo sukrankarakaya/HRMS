@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobPositionService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
+import kodlamaio.hrms.core.utilities.result.ErrorResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
@@ -34,6 +35,10 @@ public class JobPositionManager implements JobPositionService{
 
 	@Override
 	public Result add(JobPosition jobPosition) {
+		if(jobPositionDao.getByPosition(jobPosition.getPosition())!=null) {
+			
+			return new ErrorResult("Bu pozisyon zaten var.Var olan pozisyonu ekleyemezsınız.");
+		}
 		this.jobPositionDao.save(jobPosition);
 		return new SuccessResult("Yeni Pozisyon Eklendi.");
 	}

@@ -6,11 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="activation_codes")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class ActivationCodes {
 	
 	@Id
@@ -24,12 +29,6 @@ public class ActivationCodes {
 	@Column(name="is_confirimed")
 	private boolean isConfirimed;
 
-	
-	public ActivationCodes(int id, String activationCode, boolean isConfirimed) {
-		super();
-		this.id = id;
-		this.activationCode = activationCode;
-		this.isConfirimed = isConfirimed;
-	}
+
 
 }

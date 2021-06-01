@@ -6,11 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Table(name="activation_code_employers")
-@Data
+
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class ActivationCodeEmployers {
 	
@@ -23,11 +28,6 @@ public class ActivationCodeEmployers {
 	private int employersUserId;
 	
 	
-	public ActivationCodeEmployers(int id, int employersUserId) {
-		super();
-		this.id = id;
-		this.employersUserId = employersUserId;
-	}
 	
 
 }

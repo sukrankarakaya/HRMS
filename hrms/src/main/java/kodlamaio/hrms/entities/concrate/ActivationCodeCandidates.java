@@ -1,16 +1,28 @@
 package kodlamaio.hrms.entities.concrate;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Table(name="activation_code_candidates")
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+@Inheritance(strategy = InheritanceType.JOINED)
+
+
 public class ActivationCodeCandidates {
 	
 
@@ -23,9 +35,4 @@ public class ActivationCodeCandidates {
 	private int candidateUserId;
 	
 	
-	public ActivationCodeCandidates(int id, int candidateUserId) {
-		super();
-		this.id = id;
-		this.candidateUserId = candidateUserId;
-	}
 }

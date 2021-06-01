@@ -8,11 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Table(name="employers_activation_by_employees")
-@Data
+
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class EmployersActivationByEmployees {
 	
@@ -28,20 +33,13 @@ public class EmployersActivationByEmployees {
 	private int employeeId;
 	
 	@Column(name="is_confirmed")
-	private boolean isCofimed;
+	private boolean isConfirmed;
 	
 	@Column(name="confirm_date")
 	private Date confirmDate;
 	
 	
-	public EmployersActivationByEmployees(int id, int employerId, int employeeId, boolean isCofimed, Date confirmDate) {
-		super();
-		this.id = id;
-		this.employerId = employerId;
-		this.employeeId = employeeId;
-		this.isCofimed = isCofimed;
-		this.confirmDate = confirmDate;
-	}
+	
 	
 
 }

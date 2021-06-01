@@ -5,13 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
 @Table(name="employees")
-@Data
+@AllArgsConstructor
+@NoArgsConstructor 
 
-public class Employees {
+
+public class Employee extends User{
 	
 	@Id
 	@Column(name="id")
@@ -24,11 +31,9 @@ public class Employees {
 	private String lastName;
 	
 	
-	public Employees(int id, String firstName, String lastName) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+	private String isChackPasword;
+	
+	
+	
 
 }
