@@ -12,8 +12,8 @@ import kodlamaio.hrms.entities.concrate.Employer;
 public interface EmployerService{
 	
 	 DataResult<List<Employer> > getAll();
-
 	 Result add(Employer employer);
+	 
 
 
 }

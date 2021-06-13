@@ -31,7 +31,19 @@ public class JobAdvertisementControllers {
 	public Result add(@RequestBody JobAdvertisements JobAdvertimsement) {
 		return this.JobAdvertisemtService.add(JobAdvertimsement);
 	}
+
 	
+	@PostMapping("/changeActiveToClose")
+	public Result changeActiveToClose(int id) {
+		return this.JobAdvertisemtService.changeActiveToClose(id);
+	}
+	
+	
+//	@GetMapping("/getById")
+//	public DataResult<JobAdvertisements> getById(int id){
+//		return this.JobAdvertisemtService.getById(id);
+//	}
+//	
 	@GetMapping("/getAllActiveTrue")
 	public DataResult<List<JobAdvertisements>> getAllActiveTrue(){
 		return this.JobAdvertisemtService.getByActiveTrue();

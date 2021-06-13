@@ -67,4 +67,33 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 		(this.jobAdvertisementDao.getByActiveAndEmployer_EmployerId(id),"İşveren id'sine göre iş ilnları listelendi. ");
 	}
 
+	@Override
+	public DataResult<JobAdvertisements> getById(int id) {
+		return new SuccessDataResult<JobAdvertisements>(this.jobAdvertisementDao.getOne(id));
+	}
+
+	@Override
+	public Result changeActiveToClose(int id) {
+		if(getById(id)==null) {
+			return new ErrorResult("İş ilanını giriniz.");
+		}
+		if(getById(id).getData().isActive()==false) {
+			return new  ErrorResult("Zaten aktif degil.");
+		}
+		
+		JobAdvertisements jobAdvertisement= getById(id).getData();
+		jobAdvertisement.setActive(false);
+		update(jobAdvertisement);
+		return new SuccessResult("İş ilanı pasifleştirildi.");
+		
+	}
+
+	@Override
+	public Result update(JobAdvertisements jobAdertisement) {
+		this.jobAdvertisementDao.save(jobAdertisement);
+		return new SuccessResult("İş ilanı güncellendi.");
+	}
+
+	
+
 }
