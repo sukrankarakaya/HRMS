@@ -20,7 +20,7 @@ public class EmailVerification {
         return matcher.matches();
 		
 	}
-	 private Result checkEmailIsDomain(Employer employer){
+	 private Result checkEmailIsDomain(Employer employer) {
 
 	        String[] isEmailCompatible = employer.getEmail().split("@", 2); // @ işaretinden iki ayrı parçaya böler
 	        String webAdress = employer.getEmail() .substring(4); // www. kısmından sonrasını alır

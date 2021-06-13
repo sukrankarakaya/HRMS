@@ -14,6 +14,7 @@ import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.entities.concrate.Candidate;
+import kodlamaio.hrms.entities.concrate.VerificationCode;
 
 @RestController
 @RequestMapping("/api/candidates")

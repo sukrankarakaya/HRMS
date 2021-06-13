@@ -16,12 +16,12 @@ import kodlamaio.hrms.entities.concrate.JobPosition;
 
 @RestController
 @RequestMapping("/api/jobpositions")
-public class JonPositionController {
+public class JobPositionController {
 	
 	private JobPositionService jobPositionService;
 
 	@Autowired
-	public JonPositionController(JobPositionService jobPositionService) {
+	public JobPositionController(JobPositionService jobPositionService) {
 		super();
 		this.jobPositionService = jobPositionService;
 	}

@@ -10,25 +10,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name="activation_codes")
 @Data
+@Entity
+@Table(name="activation_code_employers")
+
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ActivationCodes {
+public class ActivationCodeEmployee {
 	
 	@Id
 	@GeneratedValue
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="avctivation_codes")
-	private String activationCode;
+	@Column(name="employees_user_id")
+	private int employeeUserId;
 	
-	@Column(name="is_confirimed")
-	private boolean isConfirimed;
-
-
+	
+	
 
 }

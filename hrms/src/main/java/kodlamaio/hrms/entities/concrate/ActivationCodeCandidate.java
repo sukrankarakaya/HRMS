@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Inheritance(strategy = InheritanceType.JOINED)
 
 
-public class ActivationCodeCandidates {
+public class ActivationCodeCandidate  {
 	
 
 	@Id

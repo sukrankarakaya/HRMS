@@ -11,5 +11,7 @@ public interface CandidateService {
 	DataResult<List<Candidate>> getAll();
 	Result add(Candidate candidate);
 	Result delete(int  id );
+	public boolean validWtihMail(String email);
+	public String code(String Code);
 
 }
