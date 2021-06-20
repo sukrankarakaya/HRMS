@@ -45,8 +45,6 @@ public class Employer extends User{
 
 
 	@OneToMany(mappedBy="employer")
-
-	
 	private List<JobAdvertisements> jobAdvertisements;
 	
 	

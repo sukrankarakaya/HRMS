@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concrate;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -35,25 +36,28 @@ public class JobAdvertisements {
 	
 	@Column(name="job_description")
 	private String jobDesciription;
-	
-	
+
 	@Column(name="min_salary")
 	private int minSalary;
+	
 	@Column(name="max_salary")
 	private int maxSalary;
+	
 	@Column(name="create_date")
-	private Date createDate;
+	private LocalDate createDate;
+	
 	@Column(name="dead_line")
-	private Date deadLine;
+	private LocalDate deadLine;
+	
 	@Column(name="active")
 	private boolean active;
+	
 	@Column(name="number_of_position")
 	private int numberOfPosition; 
 	
 	
 
 	@ManyToOne
-	
 	@JoinColumn(name="job_position_id")
 	private JobPosition jobPosition;
 	

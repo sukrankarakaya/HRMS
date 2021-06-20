@@ -14,6 +14,7 @@ import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import kodlamaio.hrms.entities.concrate.JobAdvertisements;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 import net.bytebuddy.asm.Advice.This;
 
 @Service
@@ -93,6 +94,18 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 		this.jobAdvertisementDao.save(jobAdertisement);
 		return new SuccessResult("İş ilanı güncellendi.");
 	}
+
+//	@Override
+//	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails() {
+//	
+//		return new SuccessDataResult<List<JobAdvertisementDto>>
+//		(this.jobAdvertisementDao.getJobAdvertisementDetails()," iş ilnları listelendi. ");
+//
+//	
+//	}
+
+	
+
 
 	
 

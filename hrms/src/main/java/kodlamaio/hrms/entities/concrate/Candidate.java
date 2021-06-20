@@ -1,11 +1,13 @@
 package kodlamaio.hrms.entities.concrate;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -38,10 +40,12 @@ public class Candidate extends User{
 	
 
 	@Column(name="birthdate")
-	private Date birthdate;
+	private LocalDate birthdate;
 	
 	private String isChackPassword;
 	
-	
+//	@OneToMany
+//	@Column(name="language")
+//	private List<Language> language;
 
 }
