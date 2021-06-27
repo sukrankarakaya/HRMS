@@ -13,12 +13,12 @@ import lombok.NoArgsConstructor;
 
 public class JobAdvertisementDto {
 	
-	//private String companyName;
-	//private String jobPosition;
-	//private String cityName;
-	//private String phoneNumber; 
+	private String companyName;
+	private String position;
+	private String phoneNumber;
+	private String cityName; 
 	private int numberOfPosition; 
-//	private LocalDate createDate;
-//	private LocalDate deadLine;
-//	
+	private LocalDate createDate;
+	private LocalDate deadLine;
+	
 }

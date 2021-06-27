@@ -35,14 +35,11 @@ public class JobPosition {
 	@Column(name="position")
 	private String position;
 	
-	@OneToMany(mappedBy="jobPosition")	
+	
+	@OneToMany(mappedBy="jobPosition")
 	private List<JobAdvertisements> jobAdvertisements;
 	
-	
-
-	
 
 	
 	
-
 }

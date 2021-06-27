@@ -3,14 +3,7 @@ package kodlamaio.hrms.entities.concrate;
 import java.time.LocalDate;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -23,11 +16,9 @@ import lombok.NoArgsConstructor;
 @Table(name="job_advertisements")
 @AllArgsConstructor
 @NoArgsConstructor
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPosition","cities","employer"})
 
 public class JobAdvertisements {
-	
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,12 +33,14 @@ public class JobAdvertisements {
 	
 	@Column(name="max_salary")
 	private int maxSalary;
-	
+
+	@Temporal(TemporalType.DATE)
 	@Column(name="create_date")
-	private LocalDate createDate;
-	
+	private Date createDate;
+
+	@Temporal(TemporalType.DATE)
 	@Column(name="dead_line")
-	private LocalDate deadLine;
+	private Date deadLine;
 	
 	@Column(name="active")
 	private boolean active;
@@ -56,18 +49,16 @@ public class JobAdvertisements {
 	private int numberOfPosition; 
 	
 	
-
 	@ManyToOne
 	@JoinColumn(name="job_position_id")
 	private JobPosition jobPosition;
 	
 	@ManyToOne
-	
 	@JoinColumn(name="city_id")
 	private Cities cities;
 	
 	@ManyToOne 
-	
 	@JoinColumn(name="employer_id")
 	private Employer employer;
+	
 }

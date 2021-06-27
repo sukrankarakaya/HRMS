@@ -10,9 +10,11 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 public interface JobAdvertisementService {
 	Result add(JobAdvertisements jobAdertisement );
+	
 	Result update(JobAdvertisements jobAdertisement );
 	
 	Result changeActiveToClose(int id);
+	
 	DataResult<JobAdvertisements> getById(int id);
 	
 	DataResult<List<JobAdvertisements>> getByActiveTrue();
@@ -21,7 +23,7 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisements>> getByActiveAndEmployerId(int id);
 
-	//DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails();
+//	DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails();
 	
 	
 }

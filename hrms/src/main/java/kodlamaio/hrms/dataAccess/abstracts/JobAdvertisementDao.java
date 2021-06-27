@@ -11,23 +11,21 @@ import lombok.Data;
 
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisements,Integer>{
 
-	@Query("From JobAdvertisements where Active=true")
+	@Query("From JobAdvertisements where active=true")
 	List<JobAdvertisements> getByActiveTrue();
 	
-	@Query("From JobAdvertisements where Active=true Order By CreateDate Desc ")
+	@Query("From JobAdvertisements where active=true Order By createDate Desc ")
 	List<JobAdvertisements> getByActiveAndByCreateDateDesc(Data createDate);
 	
-	@Query("From JobAdvertisements where Active=true and employer.id=:id")
+	@Query("From JobAdvertisements where active=true and employer.id=:id")
 	List<JobAdvertisements> getByActiveAndEmployer_EmployerId(int id);
 	
-	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto"
-	  		+ "(j.numberOfPosition) "
-	  		+ "From JobAdvertisement j ")
-	//Inner Join j.jobPosition p Inner Join j.cities c Inner Join j.employer e where Active=true
-		
+	/*@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto"
+	  		+ "(c.cityName , e.companyName,e.phoneNumber,p.position,j.numberOfPosition,j.createDate, j.deadLine) "
+	  		+ "From JobAdvertisements j Inner Join j.cities c Inner Join j.employer e Inner Join j.jobPosition p")
 	List<JobAdvertisementDto> getJobAdvertisementDetails();
 	
-	
+	*/
 	
 
 }

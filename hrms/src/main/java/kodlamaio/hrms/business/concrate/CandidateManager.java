@@ -58,7 +58,7 @@ public class CandidateManager implements CandidateService{
 		
 		if(candidate.getFirstName().isEmpty() || candidate.getFirstName().equals("string")||
 				candidate.getLastName().isEmpty() || candidate.getLastName().equals("string")||
-				candidate.getBirthdate().toString().isEmpty() || candidate.getBirthdate().equals("string")||
+				candidate.getBirthDate().toString().isEmpty() || candidate.getBirthDate().equals("string")||
 				candidate.getPassword().isEmpty() || candidate.getPassword().equals("string")||
 				candidate.getIsChackPassword().isEmpty() || candidate.getIsChackPassword().equals("string")||
 				candidate.getEmail().isEmpty() || candidate.getEmail().equals("string")||

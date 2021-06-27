@@ -30,14 +30,18 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 
 	@Override
 	public Result add(JobAdvertisements jobAdertisement) {
-		if(!checkIfNullField(jobAdertisement)) {
+		/*if(!checkIfNullField(jobAdertisement)) {
 			return new ErrorResult("Lütfen zorunlu alanları doldurunuz.");
 		}
 		else {
 
 			this.jobAdvertisementDao.save(jobAdertisement);
 			return new SuccessResult("İş ilanı eklendi.");
-		}
+		}*/
+
+
+		this.jobAdvertisementDao.save(jobAdertisement);
+		return new SuccessResult("İş ilanı eklendi.");
 	}
 	
 	
@@ -94,15 +98,15 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 		this.jobAdvertisementDao.save(jobAdertisement);
 		return new SuccessResult("İş ilanı güncellendi.");
 	}
+/*
+	@Override
+	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails() {
+	
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(this.jobAdvertisementDao.getJobAdvertisementDetails()," iş ilnları listelendi. ");
 
-//	@Override
-//	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails() {
-//	
-//		return new SuccessDataResult<List<JobAdvertisementDto>>
-//		(this.jobAdvertisementDao.getJobAdvertisementDetails()," iş ilnları listelendi. ");
-//
-//	
-//	}
+	
+	}*/
 
 	
 
