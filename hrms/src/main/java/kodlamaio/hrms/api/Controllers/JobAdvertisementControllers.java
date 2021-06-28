@@ -59,10 +59,10 @@ public class JobAdvertisementControllers {
 		return this.JobAdvertisemtService.getByActiveAndEmployerId(id);
 	}
 	
-	/*@GetMapping("/getJobAdvertisementDetails")
+	@GetMapping("/getJobAdvertisementDetails")
 	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails(){
 		return this.JobAdvertisemtService.getJobAdvertisementDetails();
-	}*/
+	}
 	
 	
 }

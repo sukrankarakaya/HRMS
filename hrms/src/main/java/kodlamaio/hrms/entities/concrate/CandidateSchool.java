@@ -14,7 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="candidate_schools")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+
 public class CandidateSchool {
 
     @Id
@@ -42,8 +43,6 @@ public class CandidateSchool {
     @Column(name = "end_date")
     private Date endDate;
 
-    @OneToMany(mappedBy="candidate")
-    private List<CandidateSchool> candidateSchools;
 
 
 

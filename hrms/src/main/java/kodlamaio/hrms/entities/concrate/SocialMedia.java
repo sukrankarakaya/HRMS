@@ -12,7 +12,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="social_medias")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+@PrimaryKeyJoinColumn(name = "candidate_id", referencedColumnName = "id")
 
 
 public class SocialMedia {
@@ -31,6 +32,7 @@ public class SocialMedia {
     @ManyToOne
     @JoinColumn(name="candidate_id")
     private Candidate candidate;
+
 
 
 

@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concrate;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,27 +8,28 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "candidate_cover_letter")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="technologies")
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
-@PrimaryKeyJoinColumn(name = "candidate_id", referencedColumnName = "id")
+
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 
 
-public class Technologies {
 
+public class CandidateCoverLetter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
-    @Column(name="technology_name")
-    private String technologyName;
+    @Column(name = "cover_letter")
+    private String coverLetter;
 
     @ManyToOne
     @JoinColumn(name="candidate_id")
     private Candidate candidate;
+
 
 
 }
