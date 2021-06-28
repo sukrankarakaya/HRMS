@@ -43,7 +43,6 @@ public class Candidate extends User{
 
 	private String isChackPassword;
 
-
 	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<Experience> experience;
@@ -56,6 +55,7 @@ public class Candidate extends User{
 	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<CandidateLanguage> candidateLanguages;
+
 	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<CandidateSchool> candidateSchools;
@@ -67,11 +67,6 @@ public class Candidate extends User{
 	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<Technologies> technologies;
-
-
-	@JsonIgnore
-	@OneToMany(mappedBy="candidate")
-	private List<CandidateCoverLetter> candidateCoverLetters;
 
 
 

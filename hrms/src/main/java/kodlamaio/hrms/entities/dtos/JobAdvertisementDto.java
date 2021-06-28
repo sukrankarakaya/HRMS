@@ -18,7 +18,7 @@ public class JobAdvertisementDto {
 	private String phoneNumber;
 	private String cityName;
 	private int numberOfPosition;
-	private Date createDate;
-	private Date deadLine;
+	private LocalDate createDate;
+	private LocalDate deadLine;
 	
 }

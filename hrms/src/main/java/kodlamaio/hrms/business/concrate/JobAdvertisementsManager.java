@@ -39,9 +39,9 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 			return new SuccessResult("İş ilanı eklendi.");
 		}*/
 
+
 		this.jobAdvertisementDao.save(jobAdertisement);
 		return new SuccessResult("İş ilanı eklendi.");
-
 	}
 	
 	
@@ -98,14 +98,14 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 		this.jobAdvertisementDao.save(jobAdertisement);
 		return new SuccessResult("İş ilanı güncellendi.");
 	}
-	@Override
+	/*@Override
 	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails() {
 	
 		return new SuccessDataResult<List<JobAdvertisementDto>>
 		(this.jobAdvertisementDao.getJobAdvertisementDetails()," iş ilnları listelendi. ");
 
 	
-	}
+	}*/
 
 	
 

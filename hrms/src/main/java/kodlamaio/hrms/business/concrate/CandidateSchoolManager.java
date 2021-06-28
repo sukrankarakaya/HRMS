@@ -9,9 +9,7 @@ import kodlamaio.hrms.dataAccess.abstracts.CandidateLanguageDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateSchoolDao;
 import kodlamaio.hrms.entities.concrate.CandidateLanguage;
 import kodlamaio.hrms.entities.concrate.CandidateSchool;
-import kodlamaio.hrms.entities.concrate.JobAdvertisements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,12 +40,5 @@ class CandidateSchoolManager implements CandidateSchoolService {
     public DataResult<List<CandidateSchool>> getAll() {
         return new SuccessDataResult
                 (this.candidateSchoolDao.findAll(),"Adayların okul bilgisi listelendi");
-    }
-
-    @Override
-    public DataResult<List<CandidateSchool>> getByEndDateDesc() {
-        Sort sort =Sort.by(Sort.Direction.DESC, "endDate");
-        return new SuccessDataResult<List<CandidateSchool>>
-                (this.candidateSchoolDao.findAll(sort),"Mezuniyet tarihlerine göre okul bilgileiri listelendi.");
     }
 }

@@ -2,7 +2,6 @@ package kodlamaio.hrms.api.Controllers;
 
 import java.util.List;
 
-import kodlamaio.hrms.entities.concrate.CandidateSchool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,18 +36,5 @@ public class ExperiencesControllers {
 	public DataResult<List<Experience>> getAll(){
 		return this.experianceService.getAll();
 	}
-
-
-
-	@GetMapping("/getByEndDateDesc")
-	public DataResult<List<Experience>> getByEndDateDesc(){
-		return this.experianceService.getByEndDateDesc();
-	}
-
-
-
-
-
-
 
 }

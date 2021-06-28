@@ -29,15 +29,9 @@ public class CandidateSchoolConrtollers {
 
     }
 
-    @PostMapping(name = "/add")
+    @PostMapping
     public Result add(@RequestBody CandidateSchool candidateSchool) {
         return this.candidateSchoolService.add(candidateSchool);
     }
-
-    @GetMapping("/getByEndDateDesc")
-    public DataResult<List<CandidateSchool>> getByEndDateDesc(){
-        return this.candidateSchoolService.getByEndDateDesc();
-    }
-
 
 }
