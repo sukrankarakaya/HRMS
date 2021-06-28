@@ -23,7 +23,7 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisements>> getByActiveAndEmployerId(int id);
 
-//	DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails();
+	/*DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails();
 	
-	
+	*/
 }

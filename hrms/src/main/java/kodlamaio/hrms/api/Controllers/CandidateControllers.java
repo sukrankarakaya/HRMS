@@ -32,6 +32,7 @@ public class CandidateControllers {
 
 	@GetMapping 
 	public DataResult<List<Candidate>> getAll(){
+
 		return this.candidateservice.getAll();
 	}
 	
@@ -39,6 +40,8 @@ public class CandidateControllers {
 	public Result add(@RequestBody Candidate candidate) {
 		return this.candidateservice.add(candidate);
 	}
+
+
 	@DeleteMapping
 	public Result deleteById(@RequestBody int id) {
 		return this.candidateservice.delete(id);

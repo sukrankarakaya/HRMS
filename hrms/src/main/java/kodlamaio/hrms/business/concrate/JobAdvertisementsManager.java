@@ -98,8 +98,7 @@ public class JobAdvertisementsManager implements JobAdvertisementService{
 		this.jobAdvertisementDao.save(jobAdertisement);
 		return new SuccessResult("İş ilanı güncellendi.");
 	}
-/*
-	@Override
+	/*@Override
 	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails() {
 	
 		return new SuccessDataResult<List<JobAdvertisementDto>>

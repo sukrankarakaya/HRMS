@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Candidate extends User{
 	
 	@Id
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name="first_name")
@@ -41,28 +43,28 @@ public class Candidate extends User{
 
 	private String isChackPassword;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<Experience> experience;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<CandidateImage> candidateImage;
 
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<CandidateLanguage> candidateLanguages;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<CandidateSchool> candidateSchools;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<SocialMedia> socialMedia;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<Technologies> technologies;
 

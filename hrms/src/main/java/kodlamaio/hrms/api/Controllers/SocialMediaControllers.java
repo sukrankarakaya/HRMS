@@ -30,7 +30,7 @@ public class SocialMediaControllers {
 
     }
 
-    @PostMapping
+    @PostMapping(value = "/add")
     public Result add(@RequestBody SocialMedia socialMedia) {
 
         return this.socialMediaService.add(socialMedia);

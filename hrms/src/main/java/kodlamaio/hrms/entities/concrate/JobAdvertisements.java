@@ -56,7 +56,7 @@ public class JobAdvertisements {
 	@ManyToOne
 	@JoinColumn(name="city_id")
 	private Cities cities;
-	
+
 	@ManyToOne 
 	@JoinColumn(name="employer_id")
 	private Employer employer;

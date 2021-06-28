@@ -43,7 +43,7 @@ public class Employer extends User{
 
 	private String isChackPassword;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="employer")
 	private List<JobAdvertisements> jobAdvertisements;
 	
