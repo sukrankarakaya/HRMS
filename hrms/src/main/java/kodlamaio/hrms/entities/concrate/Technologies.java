@@ -12,9 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="technologies")
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
-@PrimaryKeyJoinColumn(name = "candidate_id", referencedColumnName = "id")
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
 
 public class Technologies {
 

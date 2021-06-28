@@ -4,7 +4,18 @@ package kodlamaio.hrms.entities.concrate;
 import java.util.Date;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -17,9 +28,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="experiences")
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
 
-@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 
 public class Experience {
 	@Id
