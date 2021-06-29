@@ -13,14 +13,16 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+
 public class CandidateImage {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="image_path")
-    private String imagePath;
+    @Column(name="image_url")
+    private String imageUrl;
 
 
 

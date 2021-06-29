@@ -14,4 +14,6 @@ public interface CandidateService {
 	public boolean validWtihMail(String email);
 	public String code(String Code);
 
+	DataResult<Candidate> getById(int id);
+
 }

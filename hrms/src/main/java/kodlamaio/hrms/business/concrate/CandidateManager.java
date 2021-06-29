@@ -107,10 +107,6 @@ public class CandidateManager implements CandidateService{
 	}
 
 
-
-
-
-
 	@Override
 	public boolean validWtihMail(String email) {
 		return true;
@@ -123,7 +119,13 @@ public class CandidateManager implements CandidateService{
 		String code = uuid.toString();
 		return code;
 	}
-	
+
+	@Override
+	public DataResult<Candidate> getById(int id) {
+		return new SuccessDataResult<Candidate>(this.candidateDao.getById(id));
+	}
+
+
 	UUID uuid = UUID.randomUUID();
 	String code = uuid.toString();
 	
