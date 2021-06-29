@@ -2,13 +2,9 @@ package kodlamaio.hrms.api.Controllers;
 
 import java.util.List;
 
+import kodlamaio.hrms.entities.dtos.CvDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
@@ -46,5 +42,13 @@ public class CandidateControllers {
 	public Result deleteById(@RequestBody int id) {
 		return this.candidateservice.delete(id);
 	}
-	
+
+	@GetMapping("/getCandidateCVById")
+	public DataResult<CvDto> getCandidateCVById(@RequestParam int id){
+		return this.candidateservice.getCandidateCVById(id);
+	}
+
+
+
+
 }

@@ -3,12 +3,12 @@ package kodlamaio.hrms.business.concrate;
 import java.util.List;
 import java.util.UUID;
 
+import kodlamaio.hrms.business.abstracts.*;
+import kodlamaio.hrms.entities.dtos.CvDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import kodlamaio.hrms.business.abstracts.CandidateService;
-import kodlamaio.hrms.business.abstracts.VerificationCodeService;
 import kodlamaio.hrms.business.adapters.FakeMernis;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.ErrorResult;
@@ -26,21 +26,38 @@ public class CandidateManager implements CandidateService{
 
 	private CandidateDao candidateDao;
 	private FakeMernis fakeMernis;
-	private UserDao userDao;
+	/*private UserDao userDao;
 	private VerificationCodeDao verificationCodeDao;
-	private VerificationCodeService verificationCodeService; 
+	private VerificationCodeService verificationCodeService;
+	*/
+
+	private ExperienceService experienceService;
+	private CandidateLanguageService candidateLanguageService;
+	private CandidateImageService candidateImageService;
+	private SocialMediaService socialMediaService;
+	private TechnologyService technologyService;
+	private CandidateSchoolService candidateSchoolService;
+
 	
 	
 
 	@Autowired
-	public CandidateManager(CandidateDao candidateDao, FakeMernis fakeMernis, UserDao userDao,VerificationCodeDao verificationCodeDao, VerificationCodeService verificationCodeService) {
+	public CandidateManager(CandidateDao candidateDao, FakeMernis fakeMernis, UserDao userDao,VerificationCodeDao verificationCodeDao, VerificationCodeService verificationCodeService,
+							ExperienceService experienceService, CandidateLanguageService candidateLanguageService,CandidateImageService candidateImageService,
+							SocialMediaService socialMediaService, TechnologyService technologyService,CandidateSchoolService candidateSchoolService) {
 		super();
 		this.candidateDao = candidateDao;
 		this.fakeMernis = fakeMernis;
-		this.userDao = userDao;
+		/*this.userDao = userDao;
 		this.verificationCodeDao=verificationCodeDao;
-		this.verificationCodeService=verificationCodeService;
-		
+		this.verificationCodeService=verificationCodeService;*/
+
+		this.experienceService=experienceService;
+		this.candidateLanguageService=candidateLanguageService;
+		this.candidateImageService=candidateImageService;
+		this.socialMediaService=socialMediaService;
+		this.technologyService=technologyService;
+		this.candidateSchoolService=candidateSchoolService;
 		
 	}
 	
@@ -123,6 +140,23 @@ public class CandidateManager implements CandidateService{
 	@Override
 	public DataResult<Candidate> getById(int id) {
 		return new SuccessDataResult<Candidate>(this.candidateDao.getById(id));
+	}
+
+	@Override
+	public DataResult<CvDto> getCandidateCVById(int id) {
+
+		Candidate candidate =this.candidateDao.getById(id);
+		CvDto cv=new CvDto();
+		cv.experiences=candidate.getExperience();
+		cv.candidateLanguages=candidate.getCandidateLanguages();
+		cv.candidateImage=candidate.getCandidateImage();
+		cv.socialMedia=candidate.getSocialMedia();
+		cv.technologies=candidate.getTechnologies();
+		cv.candidateSchool=candidate.getCandidateSchools();
+		return new SuccessDataResult<CvDto>(cv);
+
+
+
 	}
 
 
