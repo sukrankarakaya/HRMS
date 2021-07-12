@@ -1,13 +1,7 @@
 package kodlamaio.hrms.entities.concrate;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -23,7 +17,10 @@ import lombok.NoArgsConstructor;
 @Table(name="job_positions")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
+
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+
 public class JobPosition {
 	
 	@Id

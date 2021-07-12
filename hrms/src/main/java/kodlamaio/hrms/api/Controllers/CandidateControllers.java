@@ -14,6 +14,7 @@ import kodlamaio.hrms.entities.concrate.VerificationCode;
 
 @RestController
 @RequestMapping("/api/candidates")
+@CrossOrigin
 public class CandidateControllers {
 	
 
@@ -26,7 +27,7 @@ public class CandidateControllers {
 	}
 	
 
-	@GetMapping 
+	@GetMapping ("/getAll")
 	public DataResult<List<Candidate>> getAll(){
 
 		return this.candidateservice.getAll();

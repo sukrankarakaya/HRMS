@@ -13,7 +13,8 @@ import javax.persistence.*;
 @Table(name="candidate_languages")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate","languageLevel"})
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+
 public class CandidateLanguage {
 
     @Id

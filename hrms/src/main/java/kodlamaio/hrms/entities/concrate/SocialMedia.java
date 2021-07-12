@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="social_medias")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 
 
 public class SocialMedia {

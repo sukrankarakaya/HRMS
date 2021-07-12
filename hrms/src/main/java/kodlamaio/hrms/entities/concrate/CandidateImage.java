@@ -14,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 
 public class CandidateImage {
     @Id

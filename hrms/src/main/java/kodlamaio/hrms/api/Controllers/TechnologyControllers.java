@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tegnology")
+@CrossOrigin
 public class TechnologyControllers {
 
     private TechnologyService technologyService;
@@ -28,7 +29,7 @@ public class TechnologyControllers {
 
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Result add(@RequestBody Technologies technologies) {
 
         return this.technologyService.add(technologies);

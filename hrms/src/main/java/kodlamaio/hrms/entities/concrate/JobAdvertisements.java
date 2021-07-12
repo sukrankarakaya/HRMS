@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @Table(name="job_advertisements")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPosition","cities","employer"})
-
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPosition","cities","employer"})
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 public class JobAdvertisements {
 
 	@Id
@@ -60,5 +60,14 @@ public class JobAdvertisements {
 	@ManyToOne 
 	@JoinColumn(name="employer_id")
 	private Employer employer;
-	
+
+
+	@ManyToOne
+	@JoinColumn(name = "way_of_working_id")
+	private WayOfWorking wayOfWorking;
+
+
+	@ManyToOne
+	@JoinColumn(name = "working_time_id")
+	private WorkingTime workingTime;
 }

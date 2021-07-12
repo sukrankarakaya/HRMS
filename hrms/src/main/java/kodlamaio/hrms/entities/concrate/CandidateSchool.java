@@ -14,7 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="candidate_schools")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+
 public class CandidateSchool {
 
     @Id

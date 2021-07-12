@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(("/api/candidateImage"))
 
-
+@CrossOrigin
 
 public class CandidateImageControllers {
 
