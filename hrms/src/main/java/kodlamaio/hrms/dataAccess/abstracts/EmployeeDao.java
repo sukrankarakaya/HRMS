@@ -6,6 +6,6 @@ import kodlamaio.hrms.entities.concrate.Employee;
 
 public interface EmployeeDao extends JpaRepository<Employee, Integer>{
 	
-	
+	Employee getById(int id);
 
 }

@@ -10,16 +10,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Data
 @Entity
 @Table(name="cities")
 @AllArgsConstructor
 @NoArgsConstructor 
-
+@CrossOrigin
 //@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
-@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 
 public class Cities {
 	

@@ -8,6 +8,9 @@ import kodlamaio.hrms.core.utilities.result.SuccessResult;
 
 import kodlamaio.hrms.dataAccess.abstracts.SocialMediaDao;
 
+import kodlamaio.hrms.entities.concrate.CandidateCoverLetter;
+import kodlamaio.hrms.entities.concrate.CandidateImage;
+import kodlamaio.hrms.entities.concrate.CandidateLanguage;
 import kodlamaio.hrms.entities.concrate.SocialMedia;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +40,30 @@ public class SocialMediaManager implements SocialMediaService {
     }
 
     @Override
+    public Result update(SocialMedia socialMedia) {
+        SocialMedia media= this.socialMediaDao.getById(socialMedia.getId());
+        media.setGithubLink(socialMedia.getGithubLink());
+        media.setLinkedinLink(socialMedia.getLinkedinLink());
+
+        this.socialMediaDao.save(media);
+        return new SuccessResult("Medya Bilgisi Güncellendi");
+    }
+
+    @Override
+    public Result delete(int id) {
+        this.socialMediaDao.deleteById(id);
+        return new SuccessResult("Sosyal Medya Bilgileri Silindi.");
+    }
+
+    @Override
     public DataResult<List<SocialMedia>> getAll() {
         return new SuccessDataResult<List<SocialMedia>>
                 (this.socialMediaDao.findAll(),"Data Listelendi.");
+    }
+
+    @Override
+    public DataResult<SocialMedia> getByCandidateId(int id) {
+        return new SuccessDataResult<SocialMedia>
+                ( this.socialMediaDao.getBy_CandidateId(id));
     }
 }

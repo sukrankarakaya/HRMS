@@ -12,7 +12,6 @@ import kodlamaio.hrms.entities.concrate.Employee;
 
 @RestController
 @RequestMapping("/api/employeies")
-
 @CrossOrigin
 public class EmployeeControllers {
 	
@@ -28,10 +27,17 @@ public class EmployeeControllers {
 	public DataResult<List<Employee>> getAll(){
 		return this.employeeService.getAll();
 	}
+
+
 	@PostMapping("/add")
 	public Result add(@RequestBody Employee employee) {
 		return this.employeeService.add(employee);
 	}
-	
+
+	@DeleteMapping("/delete")
+
+	public  Result delete( int id){
+		return  this.employeeService.delete(id);
+	}
 
 }

@@ -8,6 +8,7 @@ import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateImageDao;
+import kodlamaio.hrms.entities.concrate.CandidateCoverLetter;
 import kodlamaio.hrms.entities.concrate.CandidateImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,19 @@ public class CandidateImageManager implements CandidateImageService {
     }
 
     @Override
+    public Result delete(int id) {
+        this.candidateImageDao.deleteById(id);
+        return new SuccessResult("Fotagraf Silindi.");
+    }
+
+    @Override
     public DataResult<List<CandidateImage>> getAll() {
         return new SuccessDataResult<List<CandidateImage>>(this.candidateImageDao.findAll(),"Resimler Listelendi.");
+    }
+
+    @Override
+    public DataResult<CandidateImage> getByCandidateId(int id) {
+        return new SuccessDataResult<CandidateImage>
+                ( this.candidateImageDao.getBy_CandidateId(id));
     }
 }

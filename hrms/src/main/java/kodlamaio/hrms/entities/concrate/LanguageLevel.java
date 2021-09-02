@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,16 @@ public class LanguageLevel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-/*
+
+	@JsonIgnore
 	@OneToMany(mappedBy="languageLevel")
-	private List<CandidateLanguage> candidateLanguage;*/
+	private List<CandidateLanguage> candidateLanguages;
+
+
+
 }

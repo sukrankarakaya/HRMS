@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concrate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,9 @@ public class WorkingTime {
     private int id;
 
     @Column(name = "name")
-    private String name;
+    private String workingTimeName;
 
+    @JsonIgnore
     @OneToMany(mappedBy="workingTime")
     private List<JobAdvertisements> jobAdvertisements;
 

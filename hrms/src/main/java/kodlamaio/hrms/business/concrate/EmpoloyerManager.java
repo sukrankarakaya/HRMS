@@ -2,14 +2,11 @@ package kodlamaio.hrms.business.concrate;
 
 import java.util.List;
 //
+import kodlamaio.hrms.core.utilities.result.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
-import kodlamaio.hrms.core.utilities.result.DataResult;
-import kodlamaio.hrms.core.utilities.result.ErrorResult;
-import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
 import kodlamaio.hrms.entities.concrate.Employer;
@@ -58,6 +55,28 @@ public class EmpoloyerManager implements EmployerService {
 			
 		}
 		
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.employerDao.deleteById(id);
+		return  new SuccessResult("Employer Silindi.");
+	}
+
+	@Override
+	public Result update(Employer employer) {
+		Employer employer1=this.employerDao.getById(employer.getId());
+		employer1.setCompanyName(employer.getCompanyName());
+		employer1.setWebAdress(employer.getWebAdress());
+		employer1.setPhoneNumber(employer.getPhoneNumber());
+		employer1.setEmail(employer.getEmail());
+		this.employerDao.save(employer1);
+		return  new SuccessResult("Bilgiler Güncellendi.");
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return  new SuccessDataResult<>(this.employerDao.getById(id));
 	}
 
 }

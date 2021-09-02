@@ -6,6 +6,7 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.entities.concrate.Candidate;
+import kodlamaio.hrms.entities.concrate.CandidateCoverLetter;
 import kodlamaio.hrms.entities.concrate.CandidateImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,17 @@ public class CandidateImageControllers {
         candidateImage.setCandidate(candidate);
         return this.candidateImageService.add(candidateImage,imageFile);
 
+
     }
+
+
+    @DeleteMapping("/delete")
+
+    public  Result delete( int id){
+        return  this.candidateImageService.delete(id);
+    }
+
+
 
     @GetMapping("/getAll")
 
@@ -46,7 +57,11 @@ public class CandidateImageControllers {
         return this.candidateImageService.getAll();
     }
 
+    @GetMapping("/getByCandidateId")
 
+    public DataResult<CandidateImage> getByCandidateId(int id){
+        return this.candidateImageService.getByCandidateId(id);
+    }
 
 
 

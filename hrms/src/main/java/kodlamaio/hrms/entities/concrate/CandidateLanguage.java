@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,13 +26,19 @@ public class CandidateLanguage {
     @Column(name="language")
     private String language;
 
+    @ManyToOne
+    @JoinColumn(name="lnguage_level_id")
+    private LanguageLevel languageLevel;
 
-    @Column(name="lnguage_level_id")
-    private int languageLevel;
 
     @ManyToOne
     @JoinColumn(name="candidate_id")
     private Candidate candidate;
+
+    @JsonIgnore
+    @ManyToOne()
+    @JoinColumn(name="resume_id")
+    private Resume resume;
 
 
 

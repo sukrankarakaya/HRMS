@@ -10,6 +10,7 @@ public interface EmployeeService {
 
 	DataResult<List<Employee>> getAll();
 	Result add(Employee employee);
+	Result delete(int id);
 	
 	
 	

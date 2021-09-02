@@ -12,5 +12,5 @@ public interface JobPositionService {
 	DataResult<List<JobPosition>> getAll();
 
 	Result add(JobPosition jobPosition);
-
+	Result delete(int id);
 }

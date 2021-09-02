@@ -1,12 +1,11 @@
 package kodlamaio.hrms.entities.concrate;
 
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +15,10 @@ import lombok.NoArgsConstructor;
 @Table(name="job_advertisements")
 @AllArgsConstructor
 @NoArgsConstructor
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPosition","cities","employer"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPosition","cities","employer","wayOfWorking","workingTime"})
+
 @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+
 public class JobAdvertisements {
 
 	@Id
@@ -46,7 +47,7 @@ public class JobAdvertisements {
 	private boolean active;
 	
 	@Column(name="number_of_position")
-	private int numberOfPosition; 
+	private int numberOfPosition;
 	
 	
 	@ManyToOne
@@ -70,4 +71,12 @@ public class JobAdvertisements {
 	@ManyToOne
 	@JoinColumn(name = "working_time_id")
 	private WorkingTime workingTime;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobAdvertisements")
+	private List<Favorites> favorites;
+
+
+
+
 }

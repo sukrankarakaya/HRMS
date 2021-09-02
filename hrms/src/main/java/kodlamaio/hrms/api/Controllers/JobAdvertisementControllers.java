@@ -2,6 +2,7 @@ package kodlamaio.hrms.api.Controllers;
 
 import java.util.List;
 
+import kodlamaio.hrms.entities.dtos.JobAdventisamentFilterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +28,14 @@ public class JobAdvertisementControllers {
 		JobAdvertisemtService = jobAdvertisemtService;
 	} 
 	
-	@PostMapping
+	@PostMapping("/add")
 	public Result add(@RequestBody JobAdvertisements JobAdvertimsement) {
 		return this.JobAdvertisemtService.add(JobAdvertimsement);
+	}
+
+	@PutMapping("/update")
+	public Result update(@RequestBody JobAdvertisements JobAdvertimsement) {
+		return this.JobAdvertisemtService.update(JobAdvertimsement);
 	}
 
 	
@@ -37,12 +43,18 @@ public class JobAdvertisementControllers {
 	public Result changeActiveToClose(int id) {
 		return this.JobAdvertisemtService.changeActiveToClose(id);
 	}
-	
-	
-//	@GetMapping("/getById")
-//	public DataResult<JobAdvertisements> getById(int id){
-//		return this.JobAdvertisemtService.getById(id);
-//	}
+
+	@PostMapping("/changeActiveToCloseTrue")
+	public Result changeActiveToCloseTrue(int id) {
+		return this.JobAdvertisemtService.changeActiveToCloseTrue(id);
+	}
+
+
+
+	@GetMapping("/getById")
+	public DataResult<JobAdvertisements> getById(int id){
+		return this.JobAdvertisemtService.getById(id);
+	}
 	
 	@GetMapping("/getAllActiveTrue")
 	public DataResult<List<JobAdvertisements>> getAllActiveTrue(){
@@ -58,10 +70,35 @@ public class JobAdvertisementControllers {
 		return this.JobAdvertisemtService.getByActiveAndEmployerId(id);
 	}
 	
-	/*@GetMapping("/getJobAdvertisementDetails")
+	@GetMapping("/getJobAdvertisementDetails")
 	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetails(){
 		return this.JobAdvertisemtService.getJobAdvertisementDetails();
-	}*/
-	
-	
+	}
+	@GetMapping("/getJobAdvertisementDetailsById")
+	public DataResult<JobAdvertisementDto> getJobAdvertisementDetailsById(int id){
+		return this.JobAdvertisemtService.getJobAdvertisementDetailsById(id);
+	}
+
+	@GetMapping("/getFilter")
+	public DataResult<List<JobAdvertisements>> getFilter(@RequestParam int cityId,@RequestParam int positionId, @RequestParam int workingTimeId,@RequestParam int wayOfWorkingId){
+		return this.JobAdvertisemtService.getFilter(cityId,positionId,wayOfWorkingId,workingTimeId);
+	}
+
+	@DeleteMapping("/delete")
+	public Result deleteById( int id) {
+		return this.JobAdvertisemtService.delete(id);
+	}
+
+
+
+	@PostMapping("/getbyfilter")
+	public DataResult<List<JobAdvertisements>> getByFilter(@RequestBody JobAdventisamentFilterDto jobAdventisamentFilterDto,
+														   @RequestParam int pageNo, @RequestParam int pageSize) {
+		return this.JobAdvertisemtService.getByFilter(jobAdventisamentFilterDto, pageNo, pageSize);
+	}
+
+
+
+
+
 }

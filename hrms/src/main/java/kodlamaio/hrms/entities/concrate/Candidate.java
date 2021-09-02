@@ -43,6 +43,12 @@ public class Candidate extends User{
 
 	private String isChackPassword;
 
+	@OneToOne()
+	@JoinColumn(name="resume_id")
+	@JsonIgnore
+	private Resume resume;
+
+
 	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<Experience> experience;
@@ -68,6 +74,13 @@ public class Candidate extends User{
 	@OneToMany(mappedBy="candidate")
 	private List<Technologies> technologies;
 
+	@JsonIgnore
+	@OneToMany(mappedBy="candidate")
+	private List<CandidateCoverLetter> candidateCoverLetters;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<Favorites> favorite;
 
 
 

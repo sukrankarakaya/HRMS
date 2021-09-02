@@ -39,6 +39,12 @@ public class EmployeeManager implements EmployeeService{
 			return new SuccessResult("Yeni Çalışan Eklendi.");
 			
 		}
-	
+
+	@Override
+	public Result delete(int id) {
+		this.employeeDao.deleteById(id);
+		return new SuccessResult("Employee silindi.");
+	}
+
 
 }

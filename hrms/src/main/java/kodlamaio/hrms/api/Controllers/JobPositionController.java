@@ -31,14 +31,20 @@ public class JobPositionController {
 		
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public Result add(@RequestBody JobPosition jobPositon) {
 		return this.jobPositionService.add(jobPositon);
 	}
-	
-	 
-	
-	
-	
+
+	@DeleteMapping("/delete")
+
+	public  Result delete( int id){
+		return  this.jobPositionService.delete(id);
+	}
+
+
+
+
+
 
 }

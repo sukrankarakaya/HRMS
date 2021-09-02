@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concrate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,9 +44,16 @@ public class CandidateSchool {
     @Column(name = "end_date")
     private Date endDate;
 
-    @OneToMany(mappedBy="candidate")
-    private List<CandidateSchool> candidateSchools;
+    @JsonIgnore
+    @ManyToOne()
+    @JoinColumn(name="resume_id")
+    private Resume resume;
 
+
+//    @ManyToOne
+//    @JoinColumn(name="candidate_id")
+//    private Candidate candidate;
+//
 
 
 

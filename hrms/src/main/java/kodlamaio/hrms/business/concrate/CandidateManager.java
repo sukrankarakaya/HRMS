@@ -4,21 +4,21 @@ import java.util.List;
 import java.util.UUID;
 
 import kodlamaio.hrms.business.abstracts.*;
+import kodlamaio.hrms.core.utilities.result.*;
+import kodlamaio.hrms.dataAccess.abstracts.CandidateCoverLetterDao;
+import kodlamaio.hrms.entities.concrate.CandidateCoverLetter;
+import kodlamaio.hrms.entities.concrate.CandidateLanguage;
 import kodlamaio.hrms.entities.dtos.CvDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import kodlamaio.hrms.business.adapters.FakeMernis;
-import kodlamaio.hrms.core.utilities.result.DataResult;
-import kodlamaio.hrms.core.utilities.result.ErrorResult;
-import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
 import kodlamaio.hrms.dataAccess.abstracts.VerificationCodeDao;
 import kodlamaio.hrms.entities.concrate.Candidate;
-import kodlamaio.hrms.entities.concrate.VerificationCode;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
@@ -26,10 +26,6 @@ public class CandidateManager implements CandidateService{
 
 	private CandidateDao candidateDao;
 	private FakeMernis fakeMernis;
-	/*private UserDao userDao;
-	private VerificationCodeDao verificationCodeDao;
-	private VerificationCodeService verificationCodeService;
-	*/
 
 	private ExperienceService experienceService;
 	private CandidateLanguageService candidateLanguageService;
@@ -37,6 +33,7 @@ public class CandidateManager implements CandidateService{
 	private SocialMediaService socialMediaService;
 	private TechnologyService technologyService;
 	private CandidateSchoolService candidateSchoolService;
+	private CandidateCoverLetterService candidateCoverLetterService;
 
 	
 	
@@ -44,13 +41,12 @@ public class CandidateManager implements CandidateService{
 	@Autowired
 	public CandidateManager(CandidateDao candidateDao, FakeMernis fakeMernis, UserDao userDao,VerificationCodeDao verificationCodeDao, VerificationCodeService verificationCodeService,
 							ExperienceService experienceService, CandidateLanguageService candidateLanguageService,CandidateImageService candidateImageService,
-							SocialMediaService socialMediaService, TechnologyService technologyService,CandidateSchoolService candidateSchoolService) {
+							SocialMediaService socialMediaService, TechnologyService technologyService,CandidateSchoolService candidateSchoolService,
+							CandidateCoverLetterService candidateCoverLetterService) {
 		super();
 		this.candidateDao = candidateDao;
+
 		this.fakeMernis = fakeMernis;
-		/*this.userDao = userDao;
-		this.verificationCodeDao=verificationCodeDao;
-		this.verificationCodeService=verificationCodeService;*/
 
 		this.experienceService=experienceService;
 		this.candidateLanguageService=candidateLanguageService;
@@ -58,7 +54,7 @@ public class CandidateManager implements CandidateService{
 		this.socialMediaService=socialMediaService;
 		this.technologyService=technologyService;
 		this.candidateSchoolService=candidateSchoolService;
-		
+		this.candidateCoverLetterService= candidateCoverLetterService;
 	}
 	
 
@@ -116,6 +112,17 @@ public class CandidateManager implements CandidateService{
 	}
 
 	@Override
+	public Result update(Candidate candidate) {
+		Candidate candidate1 = this.candidateDao.getById(candidate.getId());
+		candidate1.setFirstName(candidate.getFirstName());
+		candidate1.setLastName(candidate.getLastName());
+		candidate1.setBirthDate(candidate.getBirthDate());
+		candidate1.setEmail(candidate.getEmail());
+		this.candidateDao.save(candidate1);
+		return new SuccessResult(" Bilgiler Güncellendi");
+	}
+
+	@Override
 	public Result delete(int id) {
 
 		this.candidateDao.deleteById(id);
@@ -142,22 +149,45 @@ public class CandidateManager implements CandidateService{
 		return new SuccessDataResult<Candidate>(this.candidateDao.getById(id));
 	}
 
+//	@Override
+//	public DataResult<CvDto> getCandidateCVById(int id) {
+//
+//		Candidate candidate =this.candidateDao.getById(id);
+//		CvDto cv=new CvDto();
+//		cv.experiences=candidate.getExperience();
+//		cv.candidateLanguages=candidate.getCandidateLanguages();
+//		cv.candidateImage=candidate.getCandidateImage();
+//		cv.socialMedia=candidate.getSocialMedia();
+//		cv.technologies=candidate.getTechnologies();
+//		cv.candidateSchool=candidate.getCandidateSchools();
+//		cv.candidateCoverLetter=candidate.getCandidateCoverLetters();
+//
+//		return new SuccessDataResult<CvDto>
+//
+//				(this.candidateDao.getCandidateCVById(id));
+//	}
+
+
 	@Override
 	public DataResult<CvDto> getCandidateCVById(int id) {
 
+
+
 		Candidate candidate =this.candidateDao.getById(id);
 		CvDto cv=new CvDto();
+		cv.candidate=candidateDao.getById(id);
 		cv.experiences=candidate.getExperience();
 		cv.candidateLanguages=candidate.getCandidateLanguages();
 		cv.candidateImage=candidate.getCandidateImage();
 		cv.socialMedia=candidate.getSocialMedia();
 		cv.technologies=candidate.getTechnologies();
 		cv.candidateSchool=candidate.getCandidateSchools();
-		return new SuccessDataResult<CvDto>(cv);
+		cv.candidateCoverLetter=candidate.getCandidateCoverLetters();
 
-
+ 	return new SuccessDataResult<CvDto>(cv);
 
 	}
+
 
 
 	UUID uuid = UUID.randomUUID();

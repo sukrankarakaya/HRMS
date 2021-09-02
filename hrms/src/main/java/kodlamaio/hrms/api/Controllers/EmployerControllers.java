@@ -2,6 +2,7 @@ package kodlamaio.hrms.api.Controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +30,28 @@ public class EmployerControllers {
 		
 	}
 		
-	@PostMapping
+	@PostMapping("/add")
 	public Result add(@RequestBody Employer employer) {
 		return this.employerService.add(employer);
 		}
+
+	@DeleteMapping("/delete")
+
+	public  Result delete( int id){
+		return  this.employerService.delete(id);
+	}
+
+
+	@GetMapping("/getById")
+
+	public DataResult<Employer> getById(int id){
+		return this.employerService.getById(id);
+	}
+
+	@PutMapping("/update")
+	public Result update(@RequestBody Employer employer){
+		return this.employerService.update(employer);}
+
 }
 
 	
